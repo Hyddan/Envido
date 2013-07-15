@@ -1,0 +1,340 @@
+/*** Tag specifics ***/
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+body
+{
+	background-color: white;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+a
+{
+	color: red;
+	text-decoration: underline;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+/*** /Tag specifics ***/
+
+.page
+{
+	margin:0px auto;
+	width: 989px;
+}
+
+.gap
+{
+	clear: both;
+	height: 10px;
+}
+
+.row, .paddedRow
+{
+	clear: both;
+}
+
+.paddedRow
+{
+	padding: 14px 35px 55px 44px;
+}
+
+/*** banner ***/
+.banner
+{
+	background-image: url(../images/envido-1.png);
+	background-position: 40% 70%;
+	background-repeat: no-repeat;
+	background-size: 450px;
+	cursor: pointer;
+	filter: alpha(opacity=100);
+	float: left;
+	height: 203px;
+	opacity: 1;
+	width: 989px;
+	z-index: 999;
+}
+/*** /banner ***/
+
+/*** content ***/
+.content
+{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background-color: #020202;
+	border-radius: 10px;
+	float: left;
+	padding-bottom: 20px;
+	width: 989px;
+}
+/*** /content ***/
+
+/*** footer ***/
+.footer
+{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background-color: #020202;
+	border-radius: 10px;
+	line-height: 61px;
+	float: left;
+	height: 61px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 0px 20px;
+	width: 949px;
+}
+.footer p
+{
+	color: #FFFFFF;
+	float: left;
+	font-size: 12px;
+}
+
+.footer ul
+{
+	float: right;
+	list-style-type: none;
+}
+
+.footer ul li
+{
+	border-left-color: #FFFFFF;
+	border-left-style: solid;
+	border-left-width: 1px;
+	display: inline;
+	padding: 0px 10px;
+}
+
+.footer ul li a
+{
+	color: #FFFFFF;
+	font-size: 12px;
+	text-decoration: none;
+}
+.footer ul li a:hover
+{
+	color: #ff0303;
+}
+/*** /footer ***/
+
+/*** header ***/
+.header
+{
+	float: left;
+}
+/*** /header ***/
+
+/*** headline ***/
+.headline
+{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	color: #fafafa;
+	background-color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 34px;
+}
+/*** /headline ***/
+
+/*** leftContainer ***/
+.leftContainer
+{
+	float: left;
+	margin: 20px 0px 0px 20px;
+	width: 24%;
+}
+
+.leftContainer h2
+{
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	background-color: #252525;
+	border-radius: 10px 10px 0px 0px;
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	height: 48px;
+	line-height: 48px;
+	padding-left: 17px;
+}
+/*** /leftContainer ***/
+
+/*** leftContent ***/
+.leftContent
+{
+	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	background-color: #f1f1f1;
+	border-radius: 0px 0px 10px 10px;
+	clear: both;
+	padding-bottom: 24px;
+}
+
+.leftContent ul
+{
+	list-style-type: none;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.leftContent ul li
+{
+	background-image: url(../images/dottedline.jpg);
+	background-position: left bottom;
+	background-repeat: repeat-x;
+	height: 30px;
+}
+
+.leftContent ul li div
+{
+	color: #000000;
+	cursor: pointer;
+	background-image: url(../images/bullet-red.jpg);
+	background-position: 7px center;
+	background-repeat: no-repeat;
+	display: block;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+	height: 29px;
+	line-height: 29px;
+	padding-left: 35px;
+	text-align: left;
+	text-decoration: none;
+}
+
+.leftContent ul li a:hover
+{
+	color: #ff0303;
+}
+
+.leftContent ol
+{
+	list-style-type: none;
+	padding-left: 11px;
+	padding-right: 11px;
+}
+
+.leftContent ol li
+{
+	color: #000000;
+	background-image: url(../images/bullet-black.jpg);
+	background-position: left 24px;
+	background-repeat: no-repeat;
+	padding-left: 16px;
+	padding-top: 20px;
+}
+/*** /leftContent ***/
+
+/*** links ***/
+.anchor
+{
+	color: #ff0303;
+	cursor: pointer;
+	font-size: 12px;
+	text-align: right;
+	text-decoration: underline;
+}
+
+.anchor:hover
+{
+	text-decoration: none	;
+}
+/*** /links ***/
+
+/*** lists ***/
+.list
+{
+	list-style-type: none;
+}
+
+.list li
+{
+	background-image: url(../images/bullet-round.jpg);
+	background-position: left 4px;
+	background-repeat: no-repeat;
+	margin-top: 10px;
+	padding-left: 25px;
+}
+/*** /lists ***/
+
+/*** rightContainer ***/
+.rightContainer
+{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background-color: #F1F1F1;
+	border-radius: 10px;
+	float: left;
+	margin: 20px 0px 0px 20px;
+	padding: 20px;
+	width: 65%;
+}
+/*** /rightContainer ***/
+
+/*** rightContent ***/
+.rightContent
+{
+	float: left;
+	width: 100%;
+}
+
+.rightContent strong
+{
+	color: red;
+}
+/*** /rightContent ***/
+
+/*** sections ***/
+.section1
+{
+	float: left;
+	width: 47%;
+}
+
+.section2
+{
+	float: right;
+	width: 47%;
+}
+/*** /sections ***/
+
+/*** vline ***/
+.vline
+{
+	background-image: url(../images/vline.jpg);
+	background-position: 50% top;
+	background-repeat: no-repeat;
+	float: left;
+	height: 100%;
+	width: 100%;
+}
+/*** /vline ***/
+
+/*** jQuery UI Overrides ***/
+.ui-widget-header
+{
+	background: black;
+	border: none;
+	color: white;
+}
+/*** /jQuery UI Overrides ***/
+
+/*** Element specifics ***/
+#divImageSliderContainer
+{
+	height: 100%;
+}
+/*** /Element specifics ***/

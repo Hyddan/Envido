@@ -1,0 +1,14 @@
+/*** Page specific styles ***/
+.profilePicture
+{
+	float: right;
+}
+/*** /Page specific styles ***/
+
+/*** vline overrides ***/
+.vline
+{
+	padding: 0px 40px 0px 40px;
+	width: 87%;
+}
+/*** /vline overrides ***/
