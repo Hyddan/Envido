@@ -4,7 +4,7 @@ window.Envido.News = (function(News) {
 			$('#newsPlaceHolder').html(data);
 
 			//Hook up events
-			$('.more').each(function (index) {
+			$('.anchor').each(function (index) {
 				$(this).on('click', function () {
 					if(Envido.Environment.Device.isMobile) {
 						window.open($(this).data('envido-url'));

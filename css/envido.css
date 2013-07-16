@@ -44,14 +44,14 @@ a:hover
 
 .paddedRow
 {
-	padding: 14px 35px 55px 44px;
+	padding: 14px 35px 55px 35px;
 }
 
 /*** banner ***/
 .banner
 {
 	background-image: url(../images/envido-1.png);
-	background-position: 40% 70%;
+	background-position: 50% 70%;
 	background-repeat: no-repeat;
 	background-size: 450px;
 	cursor: pointer;
@@ -316,7 +316,7 @@ a:hover
 {
 	background-image: url(../images/vline.jpg);
 	background-position: 50% top;
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	float: left;
 	height: 100%;
 	width: 100%;

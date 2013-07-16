@@ -9,11 +9,16 @@
 	};
 	
 	GraphicalDesign.focus = function (focus) {
-		if ('gallery' !== focus) {
+		if ('gallery' !== focus && 'prints' !== focus) {
 			return;
 		}
 		
-		if (Envido.Utils.notNullOrEmpty(GraphicalDesign.Elements.jqImageGallery)) {
+		if('prints' === focus && 0 < GraphicalDesign.Elements.divPrintsContainer.children().length) {
+			GraphicalDesign.Elements.liPrints.trigger('click');
+			return;
+		}
+		
+		if ('gallery' === focus && Envido.Utils.notNullOrEmpty(GraphicalDesign.Elements.jqImageGallery)) {
 			var firstItem = GraphicalDesign.Elements.jqImageGallery.children()[0];
 			if (Envido.Utils.notNullOrEmpty(firstItem)) {
 				$(firstItem).trigger('click');
@@ -30,11 +35,19 @@
 		Envido.loadScript('js/jquery.slides.min.js', null);
 	};
 	
+	GraphicalDesign.printsDataCallback = function(data) {
+		$.each($(data), function(index) {
+			GraphicalDesign.Elements.divPrintsContainer.append($(this));
+		});
+		
+		return;
+	};
+	
 	GraphicalDesign.initialize = function() {
 		//Set initial values
 		GraphicalDesign.Elements.initialize();
 		GraphicalDesign.Elements.divImageGalleryContainer.show();
-		GraphicalDesign.Elements.divPrintedMaterialContainer.hide();
+		GraphicalDesign.Elements.divPrintsContainer.hide();
 		
 		var focus = Envido.Utils.getQueryStringParameter('f');
 		if (Envido.Utils.notNullOrEmpty(focus)) {
@@ -48,30 +61,32 @@
 			});
 		});
 		
+		Envido.callServer('data/graphicalDesignPrints.html', '', 'GET', 'html', GraphicalDesign.printsDataCallback, Envido.handleError);
+		
 		//Hook up events
 		GraphicalDesign.Elements.liImageGallery.on('click', function () {
-			GraphicalDesign.Elements.divPrintedMaterialContainer.hide();
+			GraphicalDesign.Elements.divPrintsContainer.hide();
 			GraphicalDesign.Elements.divImageGalleryContainer.fadeIn();
 		});
 		
-		GraphicalDesign.Elements.liPrintedMaterial.on('click', function () {
+		GraphicalDesign.Elements.liPrints.on('click', function () {
 			GraphicalDesign.Elements.divImageGalleryContainer.hide();
-			GraphicalDesign.Elements.divPrintedMaterialContainer.fadeIn();
+			GraphicalDesign.Elements.divPrintsContainer.fadeIn();
 		});
 	};
 	
 	GraphicalDesign.Elements = (function(Elements) {
 		Elements.divImageGalleryContainer = null;
-		Elements.divPrintedMaterialContainer = null;
+		Elements.divPrintsContainer = null;
 		Elements.liImageGallery = null;
-		Elements.liPrintedMaterial = null;
+		Elements.liPrints = null;
 		Elements.jqImageGallery = null;
 		
 		Elements.initialize = function() {
 			Elements.divImageGalleryContainer = $('#divImageGalleryContainer');
-			Elements.divPrintedMaterialContainer = $('#divPrintedMaterialContainer');
+			Elements.divPrintsContainer = $('#divPrintsContainer');
 			Elements.liImageGallery = $('#liImageGallery');
-			Elements.liPrintedMaterial = $('#liPrintedMaterial');
+			Elements.liPrints = $('#liPrints');
 		};
 		
 		return Elements;
