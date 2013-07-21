@@ -11,5 +11,4 @@
 	return Contact;
 }(window.Envido.Contact || {}));
 
-Envido.selectedMenuItem = null;
 Envido.ready(Envido.Contact.initialize);

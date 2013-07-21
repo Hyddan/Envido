@@ -1,12 +1,12 @@
-window.Envido.Menu = (function(Menu) {
-	Menu.UI = (function(UI) {
-		UI.insertMenuOnPage = function(data) {
-			$('.menuPlaceHolder').each(function(index) {
+window.Envido.Menu = (function (Menu) {
+	Menu.UI = (function (UI) {
+		UI.insertMenuOnPage = function (data) {
+			$('.menuPlaceHolder').each(function (index) {
 				$(this).html(data);
 			});
 			
 			if(Envido.Utils.notNullOrEmpty(Envido.selectedMenuItem)) {
-				$('.topMenu > .' + Envido.selectedMenuItem).each(function(index) {
+				$('.topMenu > .' + Envido.selectedMenuItem).each(function (index) {
 					$(this).addClass('current_list_item');
 				});
 			}
@@ -15,7 +15,7 @@ window.Envido.Menu = (function(Menu) {
 		return UI;
 	}(Menu.UI || {}));
 	
-	Menu.initialize = function() {
+	Menu.initialize = function () {
 		Envido.callServer('data/menu.html', '', 'GET', 'html', Menu.UI.insertMenuOnPage, Envido.handleError);
 	};
 	

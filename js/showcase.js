@@ -8,11 +8,11 @@ window.Envido.Showcase = (function(Showcase) {
 				$(this).on('click', function () {
 					if(Envido.Environment.Device.isMobile) {
 						//window.open($(this).data('envido-url'));
-						Envido.UI.createDialog('<img height="100" src="' + $(this).data('envido-url') + '" width="200" />', 200, 300);
+						Envido.UI.createDialog('<img src="' + $(this).data('envido-url') + '" width="200" />', 200, 300);
 						return;
 					}
 					
-					Envido.UI.createDialog('<img height="360" src="' + $(this).data('envido-url') + '" width="640" />', 430, 700);
+					Envido.UI.createDialog('<img src="' + $(this).data('envido-url') + '" width="640" />', 430, 700);
 				});
 			});
 		};	

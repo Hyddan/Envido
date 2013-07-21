@@ -11,5 +11,4 @@
 	return AboutUs;
 }(window.Envido.AboutUs || {}));
 
-Envido.selectedMenuItem = null;
 Envido.ready(Envido.AboutUs.initialize);

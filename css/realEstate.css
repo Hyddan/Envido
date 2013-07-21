@@ -1,0 +1,18 @@
+/*** leftContent overrides ***/
+.leftContainer h2
+{
+	font-size: 18px;
+}
+
+.leftContent ol
+{
+	list-style-type: decimal;
+	padding-left: 37px;
+}
+
+.leftContent ol li
+{
+	background: none;
+	padding-left: 0px;
+}
+/*** leftContent overrides ***/

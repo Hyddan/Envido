@@ -1,14 +1,41 @@
 /*** Page specific styles ***/
+.flipVertically
+{
+	-moz-transform: scaleX(-1);
+	-ms-filter: "FlipH";
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+}
+
+.profileEmail
+{
+	font-size: 12px;
+}
+
 .profilePicture
 {
 	float: right;
 }
 /*** /Page specific styles ***/
 
+/*** sections overrides ***/
+.section1
+{
+	width: 48%;
+}
+
+.section2
+{
+	width: 48%;
+}
+/*** sections overrides ***/
+
 /*** vline overrides ***/
 .vline
 {
-	padding: 0px 40px 0px 40px;
-	width: 87%;
+	padding: 0px 35px 0px 35px;
+	width: 89%;
 }
 /*** /vline overrides ***/
