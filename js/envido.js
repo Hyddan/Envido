@@ -2,6 +2,7 @@ window.Envido = (function (Envido) {
 	Envido.Environment = (function (Environment) {
 		Environment.Device = Environment.Device || {};
 		Environment.detect = function () {
+			Environment.Device.isIPhone = Envido.Utils.notNullOrEmpty(navigator.userAgent.match(/(iPhone)/gi));
 			Environment.Device.isMobile = Envido.Utils.notNullOrEmpty(navigator.userAgent.match(/(android|iPad|iPhone|iPod)/gi));
 		};
 		
@@ -18,13 +19,15 @@ window.Envido = (function (Envido) {
 		};
 		
 		UI.center = function (element) {
-			element.css("left", ( $(window).width() - element.width() ) / 2+$(window).scrollLeft() + "px");
+			element.css("left", ( $(window).width() - element.width() ) / 2 + $(window).scrollLeft() + "px");
 		};
 		
-		UI.createDialog = function (markup, height, width) {
-			return $('<div></div>').html(markup).dialog({
+		UI.createDialog = function (markup, height, width, onClose) {
+			return $('<div></div>').appendTo(document.body).html(markup).dialog({
+				close: onClose,
 				height: height,
 				modal: true,
+				position: {my: 'left top', at: 'left top', of: document.body},
 				width: width
 			});
 		};
@@ -96,6 +99,7 @@ window.Envido = (function (Envido) {
 					play: {
 						active: false,
 						auto: true,
+						effect: 'fade',
 						interval: 3000,
 						restartDelay: 3000
 					},
@@ -110,6 +114,13 @@ window.Envido = (function (Envido) {
 			return jqDivContainerElement;
 		};
 		
+		UI.windowHeight = function () {
+			return $(window).height();
+		};
+		
+		UI.windowWidth = function () {
+			return $(window).width();
+		};
 		
 		return UI;
 	}(Envido.UI || {}));

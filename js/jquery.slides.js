@@ -89,7 +89,7 @@
       $.data(this, "current", this.options.start - 1);
       $.data(this, "vendorPrefix", this._getVendorPrefix());
       if (typeof TouchEvent !== "undefined") {
-        $.data(this, "touch", true);
+        $.data(this, "touch", false);
         this.options.effect.slide.speed = this.options.effect.slide.speed / 2;
       }
       $element.css({
@@ -613,11 +613,18 @@
       return false;
     };
     return $.fn[pluginName] = function(options) {
-      return this.each(function() {
+	  var _plugins = [];
+      this.each(function() {
         if (!$.data(this, "plugin_" + pluginName)) {
-          return $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+          $.data(this, "plugin_" + pluginName, new Plugin(this, options));
         }
+		
+		_plugins.push($.data(this, "plugin_" + pluginName));
+		
+		return $.data(this, "plugin_" + pluginName);
       });
+	  
+	  return _plugins;
     };
   })(jQuery, window, document);
 

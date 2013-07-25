@@ -252,6 +252,11 @@ a:hover
 {
 	text-decoration: none	;
 }
+
+.imageAnchor
+{
+	cursor: pointer;
+}
 /*** /links ***/
 
 /*** lists ***/

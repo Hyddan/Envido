@@ -5,12 +5,24 @@
 			Envido.UI.imageData['delicaciesImageSlider'].push($(this));
 			
 			$(this).on('click', function () {
-				if(Envido.Environment.Device.isMobile) {
-					Envido.UI.createDialog('<img src="' + $(this).data('envido-url') + '" width="200" />', 200, 300);
-					return;
+				var height = Envido.UI.windowHeight(),
+					onClose = null,
+					width = Envido.UI.windowWidth();
+				
+				var sizeAttribute = width >= height ? 'height="100%"' : 'width="100%"';
+								
+				if(Delicacies.stopSliderOnClick) {
+					if(!Envido.Utils.notNullOrEmpty(Delicacies.Elements.jqImageSlider)) {
+						Delicacies.Elements.jqImageSlider = Delicacies.Elements.divImageSliderContainer.slidesjs()[0];
+					}
+					Delicacies.Elements.jqImageSlider.stop();
+					
+					onClose = function () {
+						Delicacies.Elements.jqImageSlider.play();
+					}
 				}
 				
-				Envido.UI.createDialog('<img src="' + $(this).data('envido-url') + '" width="480" />', 700, 510);
+				Envido.UI.createDialog('<img ' + sizeAttribute + ' src="' + $(this).data('envido-url') + '"></img>', (height * .9), ((width * .9) < 970 ? (width * .9) : 970), onClose).css('text-align', 'center');
 			});
 		});
 		
@@ -25,8 +37,10 @@
 		//Set initial values
 		Delicacies.Elements.initialize();
 		
+		Delicacies.stopSliderOnClick = false;
+		
 		//Create UI elements
-		Delicacies.Elements.jqImageSlider = Envido.UI.createImageSlider(Delicacies.Elements.divImageSliderContainer, 'data/delicaciesImageSliderImages.html', 'delicaciesImageSlider', 200, 140, Delicacies.imageSliderDataCallback);
+		Envido.UI.createImageSlider(Delicacies.Elements.divImageSliderContainer, 'data/delicaciesImageSliderImages.html', 'delicaciesImageSlider', 200, 140, Delicacies.imageSliderDataCallback);
 		
 		//Hook up events
 	};
