@@ -10,7 +10,7 @@
 					width = Envido.UI.windowWidth();
 				
 				var sizeAttribute = width >= height ? 'height="100%"' : 'width="100%"';
-								
+				
 				if(Delicacies.stopSliderOnClick) {
 					if(!Envido.Utils.notNullOrEmpty(Delicacies.Elements.jqImageSlider)) {
 						Delicacies.Elements.jqImageSlider = Delicacies.Elements.divImageSliderContainer.slidesjs()[0];
