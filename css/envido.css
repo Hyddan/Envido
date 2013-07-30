@@ -250,12 +250,18 @@ a:hover
 
 .anchor:hover
 {
-	text-decoration: none	;
+	text-decoration: none;
 }
 
 .imageAnchor
 {
 	cursor: pointer;
+}
+
+.noAnchor a
+{
+	color: inherit;
+	text-decoration: none;
 }
 /*** /links ***/
 
