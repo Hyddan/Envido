@@ -6,12 +6,17 @@ window.Envido.News = (function(News) {
 			//Hook up events
 			$('.anchor').each(function (index) {
 				$(this).on('click', function () {
-					if(Envido.Environment.Device.isMobile) {
-						window.open($(this).data('envido-url'));
-						return;
+					if ('dialog' === $(this).data('envido-type')) {
+						if(Envido.Environment.Device.isMobile) {
+							window.open($(this).data('envido-url'));
+							return;
+						}
+						
+						Envido.UI.createDialog('<iframe height="' + ($(window).height() - 200) + '" src="' + $(this).data('envido-url') + '" width="' + ($(window).width() - 200) + '"></iframe>', $(window).height() - 100, $(window).width() - 100);
 					}
-					
-					Envido.UI.createDialog('<iframe height="' + ($(window).height() - 200) + '" src="' + $(this).data('envido-url') + '" width="' + ($(window).width() - 200) + '"></iframe>', $(window).height() - 100, $(window).width() - 100);
+					else if ('redirect' === $(this).data('envido-type')) {
+						window.location.href = $(this).data('envido-url');
+					}
 				});
 			});
 		};	
