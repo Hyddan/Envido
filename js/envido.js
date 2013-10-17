@@ -9,6 +9,37 @@ window.Envido = (function (Envido) {
 		return Environment;
 	}(Envido.Environment || {}));
 
+	Envido.Plugins = (function (Plugins) {
+		Plugins.Google = (function (Google) {
+			Google.Analytics = (function () {
+				return {
+					initialize: function (trackerId, scriptUrl) {
+						window.GoogleAnalyticsObject = 'ga';
+						window.ga = window.ga || function () {
+							(window.ga.q = window.ga.q || []).push(arguments);
+						},
+						window.ga.l = (new Date()) * 1;
+						
+						var _script = document.createElement('script'),
+							_firstScript = document.getElementsByTagName('script')[0];
+						
+						_script.async = true;
+						_script.src = Envido.Utils.notNullOrEmpty(scriptUrl) ? scriptUrl : '//www.google-analytics.com/analytics.js';
+						
+						_firstScript.parentNode.insertBefore(_script, _firstScript);
+
+						window.ga('create', trackerId, 'envido.se');
+						window.ga('send', 'pageview');
+					}
+				};
+			}());
+			
+			return Google;
+		}(Plugins.Google || {}));
+		
+		return Plugins;
+	}(Envido.Plugins || {}));
+	
 	Envido.UI = (function (UI) {
 		UI.dropDownData = UI.dropDownData || [];
 		UI.imageData = UI.imageData || [];
@@ -257,6 +288,8 @@ window.Envido = (function (Envido) {
 	Envido.initialize = function () {
 		Envido.loadDependencies();
 		Envido.Environment.detect();
+		
+		Envido.Plugins.Google.Analytics.initialize('UA-44948166-2', '//www.google-analytics.com/analytics.js');
 	};
 	
 	//ToDo: Require jQuery?
