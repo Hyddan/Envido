@@ -8,7 +8,36 @@ window.Envido = (function (Envido) {
 		
 		return Environment;
 	}(Envido.Environment || {}));
+	
+	Envido.Events = (function (Events) {
+		Events.eventHandlers = Events.eventHandlers || {};
+		
+		Events.fire = function (event, data) {
+			if (Envido.Utils.notNullOrEmpty(event) && Envido.Utils.notNullOrEmpty(Events.eventHandlers[event])) {
+				for (var key in Events.eventHandlers[event]) {
+					Events.eventHandlers[event][key].func.apply({}, [data].concat(Events.eventHandlers[event][key].args));
+				}
+			}
+		};
+		
+		Events.on = function (event, handler) {
+			var args = [];
 
+			for (var i = 2; i < arguments.length; i++) {
+				args.push(arguments[i]);
+			}
+			
+			if (event && handler) {
+				Events.eventHandlers[event] = Events.eventHandlers[event] || [];
+				Events.eventHandlers[event].push({ args: args, func: handler });
+			}
+			
+			return this;
+		};
+		
+		return Events;
+	}(Envido.Events || {}));
+	
 	Envido.Plugins = (function (Plugins) {
 		Plugins.Google = (function (Google) {
 			Google.Analytics = (function () {
