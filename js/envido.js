@@ -4,6 +4,8 @@ window.Envido = (function (Envido) {
 		Environment.detect = function () {
 			Environment.Device.isIPhone = Envido.Utils.notNullOrEmpty(navigator.userAgent.match(/(iPhone)/gi));
 			Environment.Device.isMobile = Envido.Utils.notNullOrEmpty(navigator.userAgent.match(/(android|iPad|iPhone|iPod)/gi));
+			
+			Environment.isLocalhost = -1 < window.location.hostname.indexOf('localhost');
 		};
 		
 		return Environment;
@@ -249,6 +251,15 @@ window.Envido = (function (Envido) {
 		console.log(error);
 	};
 	
+	Envido.initialize = function () {
+		Envido.loadDependencies();
+		Envido.Environment.detect();
+		
+		if (!Envido.Environment.isLocalhost) {
+			Envido.Plugins.Google.Analytics.initialize('UA-44948166-2', '//www.google-analytics.com/analytics.js');
+		}
+	};
+	
 	Envido.loadDependencies = function () {
 		Envido.loadStyle('//code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css', null);
 		Envido.loadStyle('//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', null);
@@ -312,13 +323,6 @@ window.Envido = (function (Envido) {
 		}
 
 		document.getElementsByTagName('head')[0].appendChild(link);
-	};
-	
-	Envido.initialize = function () {
-		Envido.loadDependencies();
-		Envido.Environment.detect();
-		
-		Envido.Plugins.Google.Analytics.initialize('UA-44948166-2', '//www.google-analytics.com/analytics.js');
 	};
 	
 	//ToDo: Require jQuery?
