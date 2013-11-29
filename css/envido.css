@@ -258,6 +258,13 @@ a:hover
 	cursor: pointer;
 }
 
+.inTextAnchor
+{
+	color: #ff0303;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
 .noAnchor a
 {
 	color: inherit;

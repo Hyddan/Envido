@@ -1,4 +1,6 @@
 window.Envido = (function (Envido) {
+	Envido.pathToApplicationRoot = Envido.pathToApplicationRoot || '';
+	
 	Envido.Environment = (function (Environment) {
 		Environment.Device = Environment.Device || {};
 		Environment.detect = function () {
@@ -261,17 +263,17 @@ window.Envido = (function (Envido) {
 	};
 	
 	Envido.loadDependencies = function () {
-		Envido.loadStyle('//code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css', null);
-		Envido.loadStyle('//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', null);
-		Envido.loadStyle('//cdnjs.cloudflare.com/ajax/libs/jquery.selectboxit/2.9.0/jquery.selectBoxIt.css', null);
-		Envido.loadStyle('css/envido.css', null);
-		Envido.loadStyle('css/menu.css', null);
+		Envido.loadStyle(Envido.pathToApplicationRoot + 'lib/jquery-ui.base-1.10.1.css', null);
+		Envido.loadStyle(Envido.pathToApplicationRoot + 'lib/jquery-ui.smoothness-1.10.3.css', null);
+		Envido.loadStyle(Envido.pathToApplicationRoot + 'lib/jquery.selectBoxIt-2.9.0.css', null);
+		Envido.loadStyle(Envido.pathToApplicationRoot + 'css/envido.css', null);
+		Envido.loadStyle(Envido.pathToApplicationRoot + 'css/menu.css', null);
 		
-		Envido.loadScript('//code.jquery.com/ui/1.10.3/jquery-ui.min.js', function () {
-			Envido.loadScript('//cdnjs.cloudflare.com/ajax/libs/jquery.selectboxit/2.9.0/jquery.selectBoxIt.min.js', null);
+		Envido.loadScript(Envido.pathToApplicationRoot + 'lib/jquery-ui-1.10.3.min.js', function () {
+			Envido.loadScript(Envido.pathToApplicationRoot + 'lib/jquery.selectBoxIt-2.9.0.min.js', null);
 		});
 		
-		Envido.loadScript('js/menu.js', null);
+		Envido.loadScript(Envido.pathToApplicationRoot + 'js/menu.js', null);
 	};
 	
 	Envido.loadScript = function (url, onLoad) {
@@ -335,6 +337,6 @@ window.Envido = (function (Envido) {
 
 Envido.ready(function () {
 	$('.banner').on('click', function () {
-		window.location.href = '../';
+		window.location.href = Envido.pathToApplicationRoot + '../';
 	});
 });
