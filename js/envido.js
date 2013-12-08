@@ -178,6 +178,25 @@ window.Envido = (function (Envido) {
 			return jqDivContainerElement;
 		};
 		
+		UI.createPagedImageGallery = function (jqDivContainerElement, imageDataIndex) {
+			if(jqDivContainerElement.children().length > 1) {
+				return;
+			}
+			
+			if(Envido.Utils.notNullOrEmpty(UI.imageData[imageDataIndex])) {
+				$.each(UI.imageData[imageDataIndex], function (index) {
+					jqDivContainerElement.append(this);
+				});
+				
+				jqDivContainerElement.imagegallery();
+			}
+			else {
+				setTimeout(function () { Envido.UI.createPagedImageGallery(jqDivContainerElement, imageDataIndex); }, 500);
+			}
+			
+			return jqDivContainerElement;
+		};
+		
 		UI.windowHeight = function () {
 			return $(window).height();
 		};
