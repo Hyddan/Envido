@@ -109,13 +109,15 @@
 		RealEstate.Elements.initialize();
 		
 		//Create UI elements
-		Envido.loadScript('../lib/load-image.js', function () {
-			Envido.loadScript('../lib/jquery.image-gallery.js', function () {
-				Envido.loadScript('../lib/jquery.paginate.js', function () {
-					Envido.callServer('data/realEstateImageGalleryImages.html', '', 'GET', 'html', RealEstate.Callbacks.imageGallery, Envido.handleError);
+		Envido.Utils.delay.call(this, function () {
+			Envido.loadScript('../lib/load-image.js', function () {
+				Envido.loadScript('../lib/jquery.image-gallery.js', function () {
+					Envido.loadScript('../lib/jquery.paginate.js', function () {
+						Envido.callServer('data/realEstateImageGalleryImages.html', '', 'GET', 'html', RealEstate.Callbacks.imageGallery, Envido.handleError);
+					});
 				});
 			});
-		});
+		}, 'obj => !Envido.Utils.notNullOrUndefinedFunction(obj.widget)', $, 1);
 		
 		RealEstate.UI.paginate(1);
 		

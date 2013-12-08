@@ -209,6 +209,60 @@ window.Envido = (function (Envido) {
 	}(Envido.UI || {}));
 	
 	Envido.Utils = (function (Utils) {
+		Utils.createFunctionFromLambda = (function () {
+            var lambdaCache = {};
+
+            return function (lambda) {
+                if ('string' !== typeof lambda) {
+                    throw new TypeError("Syntax error, lambda expression must be of type string.");
+                }
+
+                var result = lambdaCache[lambda];
+
+                if (typeof result !== 'function') {
+                    var funcParts = lambda.match(/(.*)\s*=>\s*(.*)/);
+                    funcParts.splice(0, 1);
+
+                    var funcBody = funcParts.pop(),
+                        funcParameters = [];
+
+                    if (Utils.exists(funcBody)) {
+                        funcParameters = Utils.normalize(funcParts.pop()).replace(/,|\(|\)/g, '').split(' ');
+                    }
+
+                    funcBody = ((!/\s*return\s+/.test(funcBody)) ? "return " : "") + funcBody + ';';
+                    funcParameters.push(funcBody);
+
+                    try {
+                        result = lambdaCache[lambda] = Function.apply({}, funcParameters);
+                    }
+                    catch (e) {
+                        throw "Syntax error in lambda expression: " + lambda;
+                    }
+                }
+
+                return result;
+            };
+        }());
+		
+		Utils.delay = function (func, shouldDelayLambda, delayObj, counter) {
+            var _self = this;
+            this.counter = counter || this.counter || 0;
+
+            if (Utils.createFunctionFromLambda(shouldDelayLambda).call({}, delayObj)) {
+                if (this.counter < 50) {
+                    setTimeout(function () { ++_self.counter; Utils.delay.call(_self, func, shouldDelayLambda, delayObj) }, 200);
+                }
+            }
+            else {
+                return func.call(this);
+            }
+        };
+		
+		Utils.exists = function (obj) {
+            return 'undefined' !== typeof obj;
+        };
+		
 		Utils.getSelectedDropDownValue = function (jqSelectElement) {
 			return null; /*Unused function - Code kept for future use*/
 			
@@ -232,6 +286,14 @@ window.Envido = (function (Envido) {
 			
 			return results;
 		};
+				
+		Utils.normalize = function (str) {
+            if (Utils.exists(str)) {
+                return str.replace(/^\s*|\s(?=\s)|\s*$/g, '');
+            }
+
+            return null;
+        };
 		
         Utils.notNullOrEmpty = function (str) {
             return str != null && str !== 'undefined' && str !== '';
