@@ -65,8 +65,8 @@
 		}
 		
 		//Create UI elements
-		Envido.loadScript('js/load-image.js', function () {
-			Envido.loadScript('js/jquery.image-gallery.js', function () {
+		Envido.loadScript('lib/load-image.js', function () {
+			Envido.loadScript('lib/jquery.image-gallery.js', function () {
 				AdAgency.Elements.jqImageGallery = Envido.UI.createImageGallery(AdAgency.Elements.divImageGalleryContainer, 'data/adAgencyImageGalleryImages.html', 'adAgencyImageGallery', AdAgency.imageGalleryDataCallback);
 			});
 		});
