@@ -302,6 +302,13 @@ a:hover
 }
 /*** /rightContainer ***/
 
+/*** rightContainer home ***/
+.rightContainer.home
+{
+	width: 92%;
+}
+/*** /rightContainer home ***/
+
 /*** rightContent ***/
 .rightContent
 {
